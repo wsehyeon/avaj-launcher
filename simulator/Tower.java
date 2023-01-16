@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+package simulator;
 
+import java.util.ArrayList;
 
 // abstract? 
 public class Tower {

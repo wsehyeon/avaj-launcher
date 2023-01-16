@@ -1,4 +1,4 @@
-
+package simulator;
 
 public interface Flyable {
 	public void updateConitions();

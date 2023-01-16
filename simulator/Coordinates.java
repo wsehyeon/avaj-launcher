@@ -1,3 +1,5 @@
+package simulator;
+
 public class Coordinates {
 	private int _longitude;
 	private int _latitude;

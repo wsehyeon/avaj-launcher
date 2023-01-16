@@ -1,4 +1,4 @@
-
+package simulator;
 
 public abstract class Aircraft {
 	private static long _idCounter;

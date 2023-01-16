@@ -1,3 +1,5 @@
+package simulator;
+
 public class WeatherProvider {
 	private WeatherProvider _wp;
 	private String[] _weather;

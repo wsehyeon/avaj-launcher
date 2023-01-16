@@ -1,4 +1,4 @@
-
+package simulator;
 
 public class Helicopter extends Aircraft implements Flyable{
 	private WeatherTower _weatherTower;
