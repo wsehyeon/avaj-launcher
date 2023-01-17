@@ -5,6 +5,7 @@ public class JetPlane extends Aircraft implements Flyable{
 
 	JetPlane(String name, Coordinates coordinates){
 		super(name, coordinates);
+		System.out.println(GREEN + "jet construct called" + RESET);
 	}
 
 	/* implements Flyable's method */
@@ -15,7 +16,9 @@ public class JetPlane extends Aircraft implements Flyable{
 
 	@Override
 	public void registerTower(WeatherTower weathertower) {
-
+		_weatherTower = weathertower;
 	}
+	
+	public String getType(){ return "GetPlane"; };
 	
 }

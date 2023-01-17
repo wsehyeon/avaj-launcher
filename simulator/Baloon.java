@@ -5,6 +5,7 @@ public class Baloon extends Aircraft implements Flyable{
 
 	Baloon(String name, Coordinates coordinates){
 		super(name,coordinates);
+		System.out.println(YELLOW + "baloon construct called"+ RESET);
 	}
 
 	/* implements Flyable's method */
@@ -15,7 +16,9 @@ public class Baloon extends Aircraft implements Flyable{
 
 	@Override
 	public void registerTower(WeatherTower weathertower) {
-
+		_weatherTower = weathertower;
 	}
 	
+	public String getType(){ return "Baloon"; };
+
 }

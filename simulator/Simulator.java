@@ -6,66 +6,90 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Simulator {
-  private int simulateTime;
-  private AircraftFactory factory = new AircraftFactory();
-  private Tower tower = new WeatherTower();
-  // input file validate 
-  private void checkFile(String str){
-    String arr[] = str.split("\n");
-    if (arr.length == 0)
-      return;
-    if (arr.length == 1)
-      try{
-        simulateTime = Integer.parseInt(arr[0]);
-      } catch (NumberFormatException ex){
-        System.out.println("input data can't convert to Integer");
-      }
-    else{
-      arr = str.split(" ");
-      createAircraft(arr);
-    }
+  public static final String RESET = "\u001B[0m";
+  public static final String BLACK = "\u001B[30m";
+  public static final String RED = "\u001B[31m";
+  public static final String GREEN = "\u001B[32m";
+  public static final String YELLOW = "\u001B[33m";
+  public static final String BLUE = "\u001B[34m";
+  public static final String PURPLE = "\u001B[35m";
+  public static final String CYAN = "\u001B[36m";
+  public static final String WHITE = "\u001B[37m";
+
+  int totalSimulationTime;
+  Tower tower;
+
+  // void openSinario(); √
+  // void checkScenario() √;
+  // create aircraft() ???
+  // void simulate();
+  // void endSimulate();
+  public Simulator(){
+    AircraftFactory factory = new AircraftFactory();
+    tower = new WeatherTower();
   }
 
-  private void createAircraft(String arr[]){
-    int longtitude;
-    int lattitude;
-    int height;
-    Flyable fly;
-
-    if (arr.length != 5) // exception?
-      return;
+  void checkScenario(String line){
+    String arr[];
+    int lot;
+    int let;
+    int hei;  
+  
+    arr = line.split(" ");
+    if (arr.length != 5){
+      System.out.println("wrong number of Aircraft data");
+      return ;
+      //throw exception?
+    }
     try{
-      longtitude = Integer.parseInt(arr[2]);
-      lattitude = Integer.parseInt(arr[3]);
-      height = Integer.parseInt(arr[4]);
-      if(longtitude < 0 || lattitude < 0) //exception?
-        return ;
-      if (height < 0 || height > 100) //exception
-        return ;
+      lot = Integer.parseInt(arr[2]);
+      let = Integer.parseInt(arr[3]);
+      hei = Integer.parseInt(arr[4]);  
       
-      fly = factory.newAircraft(arr[0], arr[1], longtitude, lattitude, height);
-      tower.register(fly);
-      
-    }catch (NumberFormatException ex){
-      System.out.println("input data can't convert to Integer");
+      // height limit is 100
+      if (lot < 0 || let < 0 || (hei < 0 && hei > 100))
+      {
+        //throw?
+        System.out.println("wrong range coordinate");
+        return ;
+      }
+
+      createAirCreate(arr[0], arr[1], lot, let, hei);
+
+    } catch(NumberFormatException e){
+      System.out.println("coordinate not a number");
+    }
+
+    
+    // Aircraft 생성...
+    /* 
+     * 예외처리의 범위..? 선택지
+     * 1. type만 확인하고 그쪽 생성자에서 좌표계 예외처리하기 √
+     * 2. 여기서 파일 유효성체크 전부다 하기 
+     */
+  }
+
+  void openScenario(String[] args) throws IOException {
+    File f = new File(args[0]);
+    if (f.exists()){
+      BufferedReader infile = new BufferedReader(new FileReader(f));
+      String line = infile.readLine();
+      try {
+        totalSimulationTime = Integer.parseInt(line);   
+      } catch (NumberFormatException e){
+        System.out.println("NOT number format simulate time input");
+        return ;
+      }
+      while((line = infile.readLine()) != null){
+        System.out.println("****"+ line +"****");
+        checkScenario(line);
+      }
+      infile.close();
     }
   }
 
-  public static void main(String[] args) throws IOException{
-    if (args.length() == 1)
-
-    if (args.length != 1)
-      System.out.println("need to sinario file");
-    File file = new File(args[0]);
-    if(file.exists()){
-      BufferedReader inFile = new BufferedReader(new FileReader(file));
-      String line = null;
-      while ((line = inFile.readLine()) != null){
-        checkFile(line);
-      }
-
-    }
-      
-
+  void createAirCreate(String type, String name, int lot, int let, int hei){
+    Flyable fly = AircraftFactory.newAircraft(type, name, lot, let, hei);
+    tower.register(fly);
   }
 }

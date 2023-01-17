@@ -6,6 +6,7 @@ public class Coordinates {
 	private int _height;
 
 	Coordinates(int longitude, int latitude, int height){
+		System.out.println("Coordinate construct called");
 		_longitude = longitude;
 		_latitude = latitude;
 		_height = height;
