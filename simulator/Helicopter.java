@@ -22,5 +22,6 @@ public class Helicopter extends Aircraft implements Flyable{
 	}
 	
 	public String getType(){ return "Helicopter"; };
+	public String getIdString() { return Long.toString(_id); }
 
 }

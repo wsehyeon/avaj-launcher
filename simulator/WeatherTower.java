@@ -3,7 +3,7 @@ package simulator;
 public class WeatherTower extends Tower {
 	public WeatherTower(){
 		super();
-		System.out.println("Weather tower construct");
+		// System.out.println("Weather tower construct");
 	}
 
 	@Override

@@ -8,7 +8,7 @@ public class Tower {
 
 	public Tower(){};
 	public void register(Flyable flyable){
-		System.out.println("tower construct");
+		// System.out.println("tower construct");
 	};
 	public void unregister(Flyable flyable){};
 	public ArrayList<Flyable> getObs(){ return observers; }

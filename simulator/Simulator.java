@@ -45,7 +45,7 @@ public class Simulator {
       lot = Integer.parseInt(arr[2]);
       lat = Integer.parseInt(arr[3]);
       hei = Integer.parseInt(arr[4]);  
-      System.out.println(lot +" "+ lat +" "+ hei);
+      // System.out.println(lot +" "+ lat +" "+ hei);
       
       // height limit is 100
       if (lot < 0 || lat < 0 || hei < 0)
@@ -84,7 +84,7 @@ public class Simulator {
         return ;
       }
       while((line = infile.readLine()) != null){
-        System.out.println("****"+ line +"****");
+        // System.out.println("****"+ line +"****");
         checkScenario(line);
       }
       infile.close();
