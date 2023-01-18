@@ -2,7 +2,6 @@ package simulator;
 
 public class Main {
   public static void main(String[] args){
-
     Simulator sim = new Simulator();
 
     if( args.length != 1){
@@ -15,6 +14,9 @@ public class Main {
       System.out.println("Exception accrued");
       return ;
     }
+
+    
+
 
   }
 }

@@ -6,33 +6,33 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Simulator {
-  public static final String RESET = "\u001B[0m";
-  public static final String BLACK = "\u001B[30m";
-  public static final String RED = "\u001B[31m";
-  public static final String GREEN = "\u001B[32m";
-  public static final String YELLOW = "\u001B[33m";
-  public static final String BLUE = "\u001B[34m";
-  public static final String PURPLE = "\u001B[35m";
-  public static final String CYAN = "\u001B[36m";
-  public static final String WHITE = "\u001B[37m";
-
   int totalSimulationTime;
   Tower tower;
 
   // void openSinario(); √
   // void checkScenario() √;
-  // create aircraft() ???
   // void simulate();
   // void endSimulate();
   public Simulator(){
-    AircraftFactory factory = new AircraftFactory();
     tower = new WeatherTower();
+  }
+
+  void simulate(int totalSimulationTime){
+    WeatherProvider wp = WeatherProvider.getProvider();
+    
+    for (int i = 0; i <totalSimulationTime; i++){
+      wp.generateWeather();
+      // 비행체 비행
+
+      //tower.changeWeather(); ?? 어떻게 비행체를 동작시킬까...
+
+    }
   }
 
   void checkScenario(String line){
     String arr[];
     int lot;
-    int let;
+    int lat;
     int hei;  
   
     arr = line.split(" ");
@@ -43,18 +43,20 @@ public class Simulator {
     }
     try{
       lot = Integer.parseInt(arr[2]);
-      let = Integer.parseInt(arr[3]);
+      lat = Integer.parseInt(arr[3]);
       hei = Integer.parseInt(arr[4]);  
+      System.out.println(lot +" "+ lat +" "+ hei);
       
       // height limit is 100
-      if (lot < 0 || let < 0 || (hei < 0 && hei > 100))
+      if (lot < 0 || lat < 0 || hei < 0)
       {
         //throw?
         System.out.println("wrong range coordinate");
         return ;
       }
-
-      createAirCreate(arr[0], arr[1], lot, let, hei);
+      if (hei > 100)
+        hei = 100;
+      createAirCreate(arr[0], arr[1], lot, lat, hei);
 
     } catch(NumberFormatException e){
       System.out.println("coordinate not a number");
@@ -78,6 +80,7 @@ public class Simulator {
         totalSimulationTime = Integer.parseInt(line);   
       } catch (NumberFormatException e){
         System.out.println("NOT number format simulate time input");
+        infile.close();
         return ;
       }
       while((line = infile.readLine()) != null){
@@ -88,8 +91,8 @@ public class Simulator {
     }
   }
 
-  void createAirCreate(String type, String name, int lot, int let, int hei){
-    Flyable fly = AircraftFactory.newAircraft(type, name, lot, let, hei);
+  void createAirCreate(String type, String name, int lot, int lat, int hei){
+    Flyable fly = AircraftFactory.newAircraft(type, name, lot, lat, hei);
     tower.register(fly);
   }
 }

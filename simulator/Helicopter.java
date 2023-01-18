@@ -5,12 +5,14 @@ public class Helicopter extends Aircraft implements Flyable{
 
 	Helicopter(String name, Coordinates coordinates){
 		super(name, coordinates);
-		System.out.println( BLUE + "heli construct called"+ RESET);
+		// System.out.println( BLUE + "heli construct called"+ RESET);
 	}
 
 	/* implements Flyable's method */
 	@Override
 	public void updateConitions() {
+		
+
 		
 	}
 

@@ -1,9 +1,6 @@
 package simulator;
 
 public class WeatherTower extends Tower {
-  public static final String PURPLE = "\u001B[35m";
-  public static final String RESET = "\u001B[0m";
-	
 	public WeatherTower(){
 		super();
 		System.out.println("Weather tower construct");
@@ -11,7 +8,7 @@ public class WeatherTower extends Tower {
 
 	@Override
 		public void register(Flyable flyable){
-			System.out.println(PURPLE + "Tower says: "+ flyable.getType() + "#" + flyable.getName() + "(" + flyable.getIdString() + ") registered to weather-tower." + RESET);
+			System.out.println("Tower says: "+ flyable.getType() + "#" + flyable.getName() + "(" + flyable.getIdString() + ") registered to weather-tower.");
 		getObs().add(flyable);
 		flyable.registerTower(this);
 	}
@@ -20,7 +17,7 @@ public class WeatherTower extends Tower {
 		
 	// }
 
-	// void changeWeather(){
-
-	// }
+	void changeWeather(){
+		conditionChanged();
+	}
 }

@@ -1,8 +1,12 @@
 package simulator;
 
+import java.util.Random;
+
+// 시뮬레이터랑 weatherProvider는 독립적인 관계 (has-a 아님!)
 public class WeatherProvider {
 	private static WeatherProvider _wp;
 	private static String[] _weather = {"RAIN","FOG","SUN", "SNOW"};
+	private int[][][] weatherArr = new int[10][10][10];
 	private WeatherProvider(){};
 
 	public static WeatherProvider getProvider(){
@@ -11,10 +15,29 @@ public class WeatherProvider {
 		return _wp;
 	}
 
+	void generateWeather(){
+		Random random = new Random(); 
+		for (int h = 0; h < 10; h++){
+			for (int x = 0; x < 10; x++){
+				for (int y = 0; y < 10; y++){
+					int randomInt = random.nextInt(4);
+					weatherArr[h][x][y] = randomInt;
+				}
+			}
+		}
+	}
 
+	// actually weather generator? -> NO
+	public String getCurreuntWeather(Coordinates coordinates){
+		// 임시 날씨 생성(레이어 개념으로 고도에 따라 날씨가 변함)
+		int hei = coordinates.getHeight() / 10;
+		int	lot = coordinates.getLongitude() / 10;
+		int lat = coordinates.getLatitude() / 10;
 
-	// actually weather generator?
-	// public String getCurreuntWeather(Coordinates coordinates){
+		if(lot > 10 || lat > 10)
+			return _weather[3];
+
+		return _weather[weatherArr[hei][lot][lat]];
 		/* 날씨생성 알고리즘
 		 * 	: 범위를 지정하여 블록 당 날씨를 생성
 		 * 	-> 블록은 몇개? || 저장할것인가?
@@ -23,6 +46,5 @@ public class WeatherProvider {
 		 * 								10 * 10 * 10 크기로 분할하여 날씨를 생성하겠음)
 		 *  - 저장 방식 : 100짜리 int배열에 날씨 인덱스를 기록하는 방향으로 고려
 		 */
-	// }
-
+	}
 }

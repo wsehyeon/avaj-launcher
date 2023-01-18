@@ -5,7 +5,7 @@ public class JetPlane extends Aircraft implements Flyable{
 
 	JetPlane(String name, Coordinates coordinates){
 		super(name, coordinates);
-		System.out.println(GREEN + "jet construct called" + RESET);
+		// System.out.println(GREEN + "jet construct called" + RESET);
 	}
 
 	/* implements Flyable's method */

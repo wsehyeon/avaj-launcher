@@ -12,7 +12,7 @@ public class Coordinates {
 		_height = height;
 	}
 
-	public int getLogitude(){ return _longitude; }
+	public int getLongitude(){ return _longitude; }
 	public int getLatitude(){ return _latitude; }
 	public int getHeight(){ return _height; }
 

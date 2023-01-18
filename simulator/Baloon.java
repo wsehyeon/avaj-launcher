@@ -5,7 +5,7 @@ public class Baloon extends Aircraft implements Flyable{
 
 	Baloon(String name, Coordinates coordinates){
 		super(name,coordinates);
-		System.out.println(YELLOW + "baloon construct called"+ RESET);
+		// System.out.println(YELLOW + "baloon construct called"+ RESET);
 	}
 
 	/* implements Flyable's method */
