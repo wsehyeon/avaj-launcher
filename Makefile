@@ -31,12 +31,14 @@ CLASSES = $(addsuffix $(JAVA), $(SRCS))
 
 CLASS_FILE = $(addsuffix $(CLASS), $(SRCS))
 
+SCENARIO_FILE = scenario2.txt
+
 default: classes
 
 classes: $(CLASSES:.java=.class)
 
 run :
-	java $(addprefix $(DIR), Main)
+	java $(addprefix $(DIR), Main) $(SCENARIO_FILE)
 
 clean:
 	$(RM) $(CLASS_FILE)

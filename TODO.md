@@ -39,4 +39,7 @@ https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-clas
 
 - Visibility of Class attributes and Operations 부분
 
+https://www.cs.swarthmore.edu/~newhall/unixhelp/javamakefiles.html
+- java Makefile
+
 ```
