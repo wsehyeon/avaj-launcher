@@ -8,5 +8,6 @@ public interface Flyable {
 	public String getType();
 	public String getName();
 	public String getIdString();
+	public boolean checkLanding();
 }
 

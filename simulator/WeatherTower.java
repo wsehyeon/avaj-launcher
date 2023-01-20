@@ -8,7 +8,7 @@ public class WeatherTower extends Tower {
 
 	@Override
 		public void register(Flyable flyable){
-			System.out.println("Tower says: "+ flyable.getType() + "#" + flyable.getName() + "(" + flyable.getIdString() + ") registered to weather-tower.");
+			System.out.println(GREEN_BACKGROUND + "Tower says: "+ flyable.getType() + "#" + flyable.getName() + "(" + flyable.getIdString() + ") registered to weather-tower." + RESET);
 		getObs().add(flyable);
 		flyable.registerTower(this);
 	}

@@ -16,4 +16,11 @@ public class Coordinates {
 	public int getLatitude(){ return _latitude; }
 	public int getHeight(){ return _height; }
 
+	public void updateCoordinate(int a, int b, int c){
+		_longitude += a;
+		_latitude += b;
+		_height += c;
+		if (_height > 100)
+			_height = 100;
+	}
 }

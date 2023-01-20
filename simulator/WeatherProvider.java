@@ -34,7 +34,7 @@ public class WeatherProvider {
 		int	lot = coordinates.getLongitude() / 10;
 		int lat = coordinates.getLatitude() / 10;
 		
-		System.out.println("coordinates : " + lot + " " +lat + " " + hei);
+		// System.out.println("coordinates : " + lot + " " +lat + " " + hei);
 
 		if(lot >= 10 || lat >= 10 || hei >= 10)
 			return _weather[3]; // 돔 밖에서는 무조건 날씨가 눈 (겨울이니깐ㅎ)	

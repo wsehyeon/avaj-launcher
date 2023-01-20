@@ -24,9 +24,7 @@ public class Simulator {
       wp.generateWeather();
       tower.conditionChanged();
       // 비행체 비행
-
       //tower.changeWeather(); ?? 어떻게 비행체를 동작시킬까...
-
     }
   }
 
