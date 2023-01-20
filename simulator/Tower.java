@@ -9,6 +9,8 @@ public class Tower {
 	public Tower(){};
 	public void register(Flyable flyable){
 		// System.out.println("tower construct");
+		// Flyable.registerTower take WeatherTower type;
+		// so this method can not call flyable.registerTower(this);
 	};
 	public void unregister(Flyable flyable){};
 	public ArrayList<Flyable> getObs(){ return observers; }

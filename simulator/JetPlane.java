@@ -11,7 +11,15 @@ public class JetPlane extends Aircraft implements Flyable{
 	/* implements Flyable's method */
 	@Override
 	public void updateConitions() {
-		
+		String w = _weatherTower.getWeather(_coordinates);
+		if (w.equals("SNOW"))
+			System.out.println(getIdString() + "]" +"jet snow");		
+		else if (w.equals("RAIN"))
+			System.out.println(getIdString() + "]" +"jet rain");		
+		else if (w.equals("SUN"))
+			System.out.println(getIdString() + "]" +"jet sun");		
+		else if (w.equals("FOG"))
+			System.out.println(getIdString() + "]" +"jet fog");
 	}
 
 	@Override

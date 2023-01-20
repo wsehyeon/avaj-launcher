@@ -14,9 +14,6 @@ public class Main {
       System.out.println("Exception accrued");
       return ;
     }
-
-    
-
-
+    sim.simulate();
   }
 }

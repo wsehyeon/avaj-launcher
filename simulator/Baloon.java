@@ -11,7 +11,16 @@ public class Baloon extends Aircraft implements Flyable{
 	/* implements Flyable's method */
 	@Override
 	public void updateConitions() {
-		
+		String w = _weatherTower.getWeather(_coordinates);
+		if (w.equals("SNOW"))
+			System.out.println(getIdString() + "]" + "baloon snow");		
+		else if (w.equals("RAIN"))
+			System.out.println(getIdString() + "]" +"baloon rain");		
+		else if (w.equals("SUN"))
+			System.out.println(getIdString() + "]" +"baloon sun");		
+		else if (w.equals("FOG"))
+			System.out.println(getIdString() + "]" +"baloon fog");
+
 	}
 
 	@Override

@@ -28,15 +28,16 @@ public class WeatherProvider {
 	}
 
 	// actually weather generator? -> NO
-	public String getCurreuntWeather(Coordinates coordinates){
+	public String getCurrentWeather(Coordinates coordinates){
 		// 임시 날씨 생성(레이어 개념으로 고도에 따라 날씨가 변함)
 		int hei = coordinates.getHeight() / 10;
 		int	lot = coordinates.getLongitude() / 10;
 		int lat = coordinates.getLatitude() / 10;
+		
+		System.out.println("coordinates : " + lot + " " +lat + " " + hei);
 
-		if(lot > 10 || lat > 10)
-			return _weather[3];
-
+		if(lot >= 10 || lat >= 10 || hei >= 10)
+			return _weather[3]; // 돔 밖에서는 무조건 날씨가 눈 (겨울이니깐ㅎ)	
 		return _weather[weatherArr[hei][lot][lat]];
 		/* 날씨생성 알고리즘
 		 * 	: 범위를 지정하여 블록 당 날씨를 생성

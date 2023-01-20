@@ -17,11 +17,12 @@ public class Simulator {
     tower = new WeatherTower();
   }
 
-  void simulate(int totalSimulationTime){
+  void simulate(){
     WeatherProvider wp = WeatherProvider.getProvider();
-    
     for (int i = 0; i <totalSimulationTime; i++){
+      System.out.println("------simulation[" + (i + 1) + "] started-----");
       wp.generateWeather();
+      tower.conditionChanged();
       // 비행체 비행
 
       //tower.changeWeather(); ?? 어떻게 비행체를 동작시킬까...
