@@ -5,6 +5,11 @@
 [ ] `public` `static` void main(String[] args)
 [ ] default access modifier
 [ ] runtime Exception?
+[ ] • You create your own custom exceptions for treating abnormal behaviour.
+[ ] 리팩토링
+[ ] 클래스 다이어그램 작성
+[ ] fail-fast (java.base/java.util.ArrayList$Itr.checkForComodification)
+
 
 ### 궁금한 것  
 [ ] 싱글톤 패턴이 어디에 적용되어야 할까?
